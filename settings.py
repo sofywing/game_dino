@@ -47,4 +47,19 @@ box_image = pygame.image.load("assets/box/box1.png")
 """ШРИФТИ"""
 pygame.font.init()
 font1 = pygame.font.Font(None, 70)
+font2 = pygame.font.Font(None, 100)
+font3 = pygame.font.SysFont(None, 120, bold=True)
+
+
+"""ТЕКСТИ"""
+find_key_txt = font2.render("Знайди ключ", True, (102, 0, 0))
+open_box_txt = font2.render("Натисни f, щоб відкрити", True, (102, 0, 0))
+get_key_txt = font2.render("Натисни z, щоб підібрати", True, (102, 0, 0))
+game_name = font3.render("Dinoss", True, (166, 67, 0))
+
+"""МУЗИКА"""
+pygame.mixer.init()
+pygame.mixer.music.load("assets/sounds/music_fon.mp3")
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1)
 

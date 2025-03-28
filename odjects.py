@@ -86,7 +86,25 @@ class Player(Sprite): #клас для гравця
                     self.fall -= self.jump_count
         else:
             self.is_jump = not self.on_ground
+class Button:
+    def __init__(self, x, y, w, h, color, text, txt_size, txt_color):
+        self.w = w
+        self.h = h
+        self.color = color
 
-                
+        self.image = pygame.Surface((self.w, self.h))
+        self.image.fill(self.color)
+
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+        self.text = pygame.font.Font(None, txt_size).render(text, True, txt_color)
+
+    def draw(self, shift_x, shift_y):
+        window.blit(self.image, (self.rect.x, self.rect.y))
+        window.blit(self.text, (self.rect.x + shift_x, self.rect.y + shift_y))
+
+                        
 
 
