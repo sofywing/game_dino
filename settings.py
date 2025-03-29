@@ -19,8 +19,10 @@ coins = pygame.sprite.Group()
 
 """КАРТИНКИ СПРАЙТІВ"""
 bg = pygame.transform.scale(pygame.image.load("assets/background/bg1.jpg"), (W, H))
+bg2 = pygame.transform.scale(pygame.image.load("assets/background/bg2.jpg"), (W, H))
 
 platform_image = pygame.image.load("assets/background/platform.png")
+platform_image2 = pygame.image.load("assets/background/platform2.png")
 
 player_images = [
     pygame.image.load("assets/images/player/stand_1.png"),

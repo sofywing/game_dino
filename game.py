@@ -6,11 +6,13 @@ pygame.init()
 
 level1_objects, key, box = draw_level(level1)
 
+
 player = Player(50, H-90, 40, 50, 10, player_images)
 door = MapObject(-300, -300, 50, 70, portal_image)
 
 level1_objects.add(player)
 level1_objects.add(door)
+
 
 """КНОПКИ ДЛЯ МЕНЮ"""
 btn_play = Button(470, 250, 350, 100, (204, 102, 0), "PLAY", 60, (0, 0, 0))
@@ -27,6 +29,13 @@ while game:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False
+        if mode == "menu":
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if btn_play.rect.collidepoint(x, y):
+                    mode = "game"
+                if btn_exit.rect.collidepoint(x, y):
+                    game = False
 
     if mode == "menu":
         window.blit(bg, (0, 0))
@@ -36,11 +45,7 @@ while game:
         btn_instructions.draw(15, 30)
         btn_exit.draw(120, 40)
 
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                x, y = pygame.mouse.get_pos()
-                if btn_play.rect.collidepoint(x, y):
-                    mode = game
+            
     if mode == "game":
         if not finish:
             window.blit(bg, (0, 0))
@@ -70,11 +75,11 @@ while game:
                     
             if pygame.sprite.collide_rect(player,box) and not is_key:
                 window.blit(find_key_txt, (W//2 - 400, 50))
-                
+        
             if door:
                 if coins_count > 1:
-                    door.rect.x = 1000
-                    door.rect.y = 500
+                    door.rect.x = 9500
+                    door.rect.y = 300
 
                 if pygame.sprite.collide_rect(player, door):
                     for obj in level1_objects:
@@ -88,6 +93,7 @@ while game:
                     player.rect.x = 50
                     player.rect.y = H - 90
                     level1_objects.add(player)
+                    
 
         if player.rect.y > 800:
             finish = True
